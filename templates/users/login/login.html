@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f8f8;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            width: 70%;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+        .left {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .right {
+            flex: 1;
+            padding: 40px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .terms {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <img src="login-illustration.jpg" alt="Login Illustration" width="300">
+        </div>
+        <div class="right">
+            <h2>Welcome back, Yash</h2>
+            <p>Please enter your details.</p>
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <div class="terms">
+                <input type="checkbox" id="terms">
+                <label for="terms">Terms & Conditions</label>
+            </div>
+            <button>Log in</button>
+            <p>Don't have an account? <a href="#">Sign up for free</a></p>
+        </div>
+    </div>
+</body>
+</html>

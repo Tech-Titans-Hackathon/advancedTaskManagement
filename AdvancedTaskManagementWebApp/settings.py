@@ -37,6 +37,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'apps.users',
+    'apps.tasks',
+    'apps.notifications',
+    # 'apps.github_integration',
+    # Third-Party Apps
+    'crispy_forms',
+    'rest_framework',
+    # 'allauth',
+    # 'allauth.account',
+    
+    # Tailwind CSS
+    'tailwind',
+    'theme', 
 ]
 
 MIDDLEWARE = [
@@ -54,7 +67,7 @@ ROOT_URLCONF = 'AdvancedTaskManagementWebApp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -66,21 +79,33 @@ TEMPLATES = [
         },
     },
 ]
-
+TAILWIND_APP_NAME = 'theme'
 WSGI_APPLICATION = 'AdvancedTaskManagementWebApp.wsgi.application'
-
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'TASK_MANAGEMENT_APP',
+        'USER': 'root',
+        'PASSWORD': 'Shaan@123',
+        'HOST': 'localhost',  # Change if using a remote database
+        'PORT': '3306',  # Default MySQL port
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
@@ -111,7 +136,8 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
@@ -121,3 +147,18 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+SITE_ID = 1
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"  # Users must verify email
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True  # Auto-confirm if link is valid
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_EMAIL_VERIFICATION_EXPIRE_DAYS = 1  # 24 hours
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'your_email@gmail.com'
+EMAIL_HOST_PASSWORD = 'your_email_password'

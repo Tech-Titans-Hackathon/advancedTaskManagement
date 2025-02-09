@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block css_links %}
+    <link rel="stylesheet" href="{% static 'css/signup.module.css' %}">
+{% endblock css_links %}
+
+{% block title %} Sign up {% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="left">
+            <img src="{% static 'images/login-illustration.jpg' %}" alt="Login Illustration" width="300">
+        </div>
+        <div class="right">
+            <h2>Welcome back, Yash</h2>
+            <p>Please enter your details.</p>
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <div class="terms">
+                <input type="checkbox" id="terms">
+                <label for="terms">Terms & Conditions</label>
+            </div>
+            <button>Log in</button>
+            <p>Don't have an account? <a href="#">Sign up for free</a></p>
+        </div>
+    </div>
+{% endblock content %}

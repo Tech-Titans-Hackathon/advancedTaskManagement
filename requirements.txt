@@ -1,0 +1,10 @@
+Django
+django-crispy-forms
+django-allauth
+djangorestframework
+django-channels
+celery
+redis
+PyGithub
+django-tailwind
+    
