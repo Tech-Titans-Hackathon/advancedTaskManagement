@@ -7,4 +7,5 @@ celery
 redis
 PyGithub
 django-tailwind
-    
+django-imagekit
+mysqlclient

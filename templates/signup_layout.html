@@ -1,0 +1,18 @@
+{% load tailwind_tags static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% tailwind_css %}
+    <!-- Dynamic Page Title -->
+    <title>{% block title %}Default Title{% endblock title %}</title>
+    
+    <!-- CSS Links -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+    {% block css_links %}{% endblock css_links %}
+</head>
+<body style="background:#8380FE;overflow:hidden">
+    {% block content %}{% endblock content %}
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+</body>
+</html>

@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+from imagekitio import ImageKit
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,14 +38,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.users',
+    'apps.workspaces',
     'apps.tasks',
     'apps.notifications',
+    'apps.projects',
     # 'apps.github_integration',
     # Third-Party Apps
     'crispy_forms',
     'rest_framework',
     # 'allauth',
     # 'allauth.account',
+    'imagekit',
     
     # Tailwind CSS
     'tailwind',
@@ -67,7 +70,7 @@ ROOT_URLCONF = 'AdvancedTaskManagementWebApp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'templates', BASE_DIR / 'components'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -92,6 +95,18 @@ NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+IMAGEKIT = {
+    "private_key": "private_8TXqFPGmz+pRmIHqeltzWDZY4To=",
+    "public_key": "public_OUEJZU1GLikbD0mvjd4obyso4ok=",
+    "url_endpoint": "https://ik.imagekit.io/tkwyy9ull/"
+}
+
+imagekit = ImageKit(
+    private_key=IMAGEKIT["private_key"],
+    public_key=IMAGEKIT["public_key"],
+    url_endpoint=IMAGEKIT["url_endpoint"]
+)
 
 DATABASES = {
     'default': {

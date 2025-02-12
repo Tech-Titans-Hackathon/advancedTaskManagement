@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    {% load static %}
     {% tailwind_css %}
     <!-- Dynamic Page Title -->
     <title>{% block title %}Default Title{% endblock title %}</title>
     
     <!-- CSS Links -->
-    <link rel="stylesheet" href="{% static 'css/dist/styles.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
     {% block css_links %}{% endblock css_links %}
 </head>
-<body>
+<body class="bg-[#F0F6FF]">
     {% block content %}{% endblock content %}
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </body>
 </html>

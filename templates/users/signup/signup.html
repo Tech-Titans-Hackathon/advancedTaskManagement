@@ -1,28 +1,58 @@
-{% extends 'layout.html' %}
+{% extends 'signup_layout.html' %}
 {% load static %}
 
-{% block css_links %}
-    <link rel="stylesheet" href="{% static 'css/signup.module.css' %}">
-{% endblock css_links %}
 
 {% block title %} Sign up {% endblock title %}
 
 {% block content %}
-    <div class="container">
-        <div class="left">
-            <img src="{% static 'images/login_page.png' %}" alt="Login Illustration" width="300">
-        </div>
-        <div class="right">
-            <h2>Welcome back, Yash</h2>
-            <p>Please enter your details.</p>
-            <input type="email" placeholder="Email">
-            <input type="password" placeholder="Password">
-            <div class="terms">
-                <input type="checkbox" id="terms">
-                <label for="terms">Terms & Conditions</label>
+<div class="flex min-h-full min-w-full overflow-hidden ">
+    <img src="{% static 'images/signup.svg' %}" alt="Login Illustration" class='md:block hidden' style="margin-bottom:-98px;" >
+    <div style="margin-top:35px; border-top-left-radius:50px !important;padding-top:45px" class="w-full  bg-white border border-gray-200 shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <div class="mx-auto max-w-lg p-0">
+            <h1 class="font-bold text-4xl my-12 ">Create Account</h1>
+            <div class="flex gap-4 my-5">
+                <button class="flex items-center space-x-2 px-5 py-2 border border-gray-300 rounded-full shadow-sm bg-white hover:bg-gray-100">
+                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                        <path fill="#4285F4" d="M46.7 24.5c0-1.6-.1-3.2-.4-4.7H24v9h12.9c-.6 3-2.3 5.5-4.8 7.1v5.9h7.7c4.5-4.1 7.1-10.1 7.1-16.3z"/>
+                        <path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.6l-7.7-5.9c-2.1 1.4-4.7 2.3-8.1 2.3-6.2 0-11.4-4.2-13.3-9.9H2v6.2C6.1 42.3 14.4 48 24 48z"/>
+                        <path fill="#FBBC05" d="M10.7 28.8c-.5-1.4-.7-2.8-.7-4.3s.2-2.9.7-4.3V14H2C.7 16.9 0 20 0 24s.7 7.1 2 10.1l8.7-5.3z"/>
+                        <path fill="#EA4335" d="M24 9.5c3.6 0 6.8 1.2 9.3 3.5l7-7C35.9 1.8 30.5 0 24 0 14.4 0 6.1 5.7 2 14l8.7 5.3c1.9-5.7 7.1-9.8 13.3-9.8z"/>
+                    </svg>
+                    <span class="text-gray-700 font-medium">Sign up with Google</span>
+                </button>
+                <!-- GitHub Sign Up Button -->
+                <button class="flex items-center space-x-2 px-5 py-2 border border-gray-300 rounded-full shadow-sm bg-white hover:bg-gray-100">
+                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path fill="black" d="M12 .5C5.6.5.5 5.6.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1 3 0 .1-.7.4-1 .7-1.3-2.7-.3-5.4-1.3-5.4-5.8 0-1.3.5-2.5 1.2-3.4-.1-.3-.5-1.5.1-3 0 0 1-.3 3.3 1.2.9-.2 1.9-.4 2.8-.4s1.9.1 2.8.4c2.3-1.5 3.3-1.2 3.3-1.2.6 1.5.2 2.7.1 3 .8.9 1.2 2 1.2 3.4 0 4.5-2.7 5.5-5.4 5.8.4.3.8 1 .8 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.6 18.4.5 12 .5z"/>
+                    </svg>
+                    <span class="text-gray-700 font-medium">Sign up with Github</span>
+                </button>
             </div>
-            <button>Log in</button>
-            <p>Don't have an account? <a href="#">Sign up for free</a></p>
-        </div>
+            <form class="max-w-md" style="margin-top:35px !important">
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="text" name="floating_fullname" id="floating_fullname" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-400 appearance-none  dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                    <label for="floating_fullname" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Full Name</label>
+                </div>
+                <div class="relative z-0 w-full my-12 group">
+                    <input type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-400 appearance-none  dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                    <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
+                </div>
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="password" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2  appearance-none  border-gray-400 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                    <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
+                </div>
+                <div class="flex items-start mb-5">
+                    <div class="flex items-center h-5">
+                    <input id="terms" type="checkbox" value="" class="rounded-md w-4 h-4 border border-gray-300  bg-gray-50 focus:ring-3 focus:ring-blue-300  dark:border-gray-600  " required />
+                    </div>
+                    <label for="terms" class="ms-2 text-sm font-medium ">I agree with the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a></label>
+                </div>
+                <div class="flex w-full">
+                    <button type="submit" class="text-white bg-gray-900 hover:bg-gray-950 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm block w-full px-5 py-2.5 text-center ">Login</button>
+            </div>
+            </form>
+            <p style="padding:20px 0px">Already have an account? <a href="/users/login" class="text-blue-600 hover:underline dark:text-blue-500">Login now</a></p>
+        </div>    
     </div>
+</div>
 {% endblock content %}
