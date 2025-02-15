@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="bg-white rounded-2xl shadow-lg">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-semibold text-gray-800">Tasks</h2>
+        <select
+            class="px-4 py-2 rounded-full border border-gray-200 text-gray-600 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100">
+            <option>Weekly</option>
+            <option>Monthly</option>
+            <option>Yearly</option>
+        </select>
+    </div>
+    <div class="max-h-md">
+        <canvas id="tasksChart"></canvas>
+    </div>
+</div>
+
+<!-- Add Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const ctx = document.getElementById('tasksChart').getContext('2d');
+        
+        const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+        gradient.addColorStop(0, 'rgba(0, 157, 255, 0.1)');
+        gradient.addColorStop(1, 'rgba(0, 157, 255, 0.0)');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                datasets: [
+                    {
+                        label: 'Tasks',
+                        data: [35, 55, 40, 60, 70, 55, 55],
+                        borderColor: '#00A0FF',
+                        backgroundColor: gradient,
+                        tension: 0.4,
+                        fill: true,
+                        pointRadius: 0,
+                        pointHoverRadius: 6,
+                        pointHoverBackgroundColor: '#FFFFFF',
+                        pointHoverBorderColor: '#00A0FF',
+                        pointHoverBorderWidth: 3
+                    },
+                    {
+                        label: 'Previous Period',
+                        data: [25, 35, 30, 40, 45, 35, 35],
+                        borderColor: '#E5E7EB',
+                        borderDash: [5, 5],
+                        tension: 0.4,
+                        pointRadius: 0,
+                        pointHoverRadius: 0
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#FFFFFF',
+                        titleColor: '#1F2937',
+                        bodyColor: '#1F2937',
+                        borderColor: '#E5E7EB',
+                        borderWidth: 1,
+                        padding: 12,
+                        displayColors: false,
+                        callbacks: {
+                            title: function(context) {
+                                return context[0].label;
+                            },
+                            label: function(context) {
+                                return context.raw + ' tasks';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#9CA3AF'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            stepSize: 20,
+                            color: '#9CA3AF'
+                        },
+                        grid: {
+                            color: '#F3F4F6'
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

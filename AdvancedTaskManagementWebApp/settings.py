@@ -33,6 +33,11 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.github',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -42,15 +47,9 @@ INSTALLED_APPS = [
     'apps.tasks',
     'apps.notifications',
     'apps.projects',
-    # 'apps.github_integration',
-    # Third-Party Apps
     'crispy_forms',
     'rest_framework',
-    # 'allauth',
-    # 'allauth.account',
     'imagekit',
-    
-    # Tailwind CSS
     'tailwind',
     'theme', 
 ]
@@ -63,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',  # Add this line
 ]
 
 ROOT_URLCONF = 'AdvancedTaskManagementWebApp.urls'
@@ -157,6 +157,22 @@ STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]  # For development
 STATIC_ROOT = BASE_DIR / "staticfiles"  # Where collectstatic will store files in production
 
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {'access_type': 'online'},
+        'APP': {
+            'client_id': '905678148840-uciiu0a2c2uucic4g3mp827etbh45tmv.apps.googleusercontent.com',
+            'secret':   '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',
+        }
+    },
+    # 'github': {
+    #     'APP': {
+    #         'client_id': os.getenv('GITHUB_CLIENT_ID'),
+    #         'secret': os.getenv('GITHUB_CLIENT_SECRET'),
+    #     }
+    # }
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -165,7 +181,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SITE_ID = 1
 
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_LOGIN_METHODS = {'email'}
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"  # Users must verify email
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True  # Auto-confirm if link is valid
 LOGIN_REDIRECT_URL = '/'
@@ -175,5 +191,21 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'your_email@gmail.com'
-EMAIL_HOST_PASSWORD = 'your_email_password'
+EMAIL_HOST_USER = 'techtitatns@gmail.com'
+# EMAIL_HOST_PASSWORD = '123456789@Aa'
+EMAIL_HOST_PASSWORD = "jedvgszqepxgbqpb"
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER 
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+LOGIN_REDIRECT_URL = '/'  # Redirect after login
+LOGOUT_REDIRECT_URL = '/'  # Redirect after logout
+
+SITE_ID = 1  # Required for allauth
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_USERNAME_REQUIRED = True
+SOCIALACCOUNT_QUERY_EMAIL = True
+SOCIALACCOUNT_AUTO_SIGNUP = True

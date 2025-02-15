@@ -1,58 +1,164 @@
-{% extends 'signup_layout.html' %}
+{% extends 'layout.html' %}
 {% load static %}
 
-
-{% block title %} Sign up {% endblock title %}
-
+{% block title %} Signup {% endblock title %}
 {% block content %}
-<div class="flex min-h-full min-w-full overflow-hidden ">
-    <img src="{% static 'images/signup.svg' %}" alt="Login Illustration" class='md:block hidden' style="margin-bottom:-98px;" >
-    <div style="margin-top:35px; border-top-left-radius:50px !important;padding-top:45px" class="w-full  bg-white border border-gray-200 shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-        <div class="mx-auto max-w-lg p-0">
-            <h1 class="font-bold text-4xl my-12 ">Create Account</h1>
-            <div class="flex gap-4 my-5">
-                <button class="flex items-center space-x-2 px-5 py-2 border border-gray-300 rounded-full shadow-sm bg-white hover:bg-gray-100">
-                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-                        <path fill="#4285F4" d="M46.7 24.5c0-1.6-.1-3.2-.4-4.7H24v9h12.9c-.6 3-2.3 5.5-4.8 7.1v5.9h7.7c4.5-4.1 7.1-10.1 7.1-16.3z"/>
-                        <path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.6l-7.7-5.9c-2.1 1.4-4.7 2.3-8.1 2.3-6.2 0-11.4-4.2-13.3-9.9H2v6.2C6.1 42.3 14.4 48 24 48z"/>
-                        <path fill="#FBBC05" d="M10.7 28.8c-.5-1.4-.7-2.8-.7-4.3s.2-2.9.7-4.3V14H2C.7 16.9 0 20 0 24s.7 7.1 2 10.1l8.7-5.3z"/>
-                        <path fill="#EA4335" d="M24 9.5c3.6 0 6.8 1.2 9.3 3.5l7-7C35.9 1.8 30.5 0 24 0 14.4 0 6.1 5.7 2 14l8.7 5.3c1.9-5.7 7.1-9.8 13.3-9.8z"/>
+<div class="min-h-screen flex flex-col md:flex-row">
+    <!-- Left Section -->
+    <div class="w-full md:w-1/2 p-8 hidden md:flex items-center justify-center" style="background:rgba(131, 128, 254, 0.45);">
+        <div class="max-w-md">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-8">
+                Steps into the real<br>Financial freedom.
+            </h1>
+            <img src="{% static 'images/signup.svg' %}" alt="Financial Freedom Illustration" class="w-full max-w-md mx-auto"/>
+        </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="w-full md:w-1/2 p-8 flex items-center justify-center bg-white">
+        <div class="w-full max-w-md">
+            <!-- Language Selector -->
+            <div class="flex justify-end mb-8">
+                <select class="bg-transparent text-gray-600 text-sm focus:outline-none">
+                    <option>English(UK)</option>
+                </select>
+            </div>
+            <!-- Alert Message -->
+            <div id="alert-box" class="hidden w-full items-center min-h-[100px] justify-center p-4">
+                <div id="alert-content" class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium">
+                    <svg id="alert-icon" class="h-5 w-5"></svg>
+                    <span id="alert-message"></span>
+                </div>
+            </div>
+            <h2 class="text-3xl font-bold mb-8 md:text-left text-center">Create Account</h2>
+
+         
+            <!-- Social Login Buttons -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <a href="{% url 'google_login' %}">
+                    <button class="flex items-center justify-center gap-2 px-4 py-2 border rounded-lg hover:bg-gray-50 transition-colors">
+                        <img src="https://www.google.com/favicon.ico" alt="Google" class="w-5 h-5"/>
+                        <span class="text-gray-600">Sign up with Google</span>
+                    </button>
+                </a>
+                <button class="flex items-center justify-center gap-2 px-4 py-2 border rounded-lg hover:bg-gray-50 transition-colors">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                     </svg>
-                    <span class="text-gray-700 font-medium">Sign up with Google</span>
-                </button>
-                <!-- GitHub Sign Up Button -->
-                <button class="flex items-center space-x-2 px-5 py-2 border border-gray-300 rounded-full shadow-sm bg-white hover:bg-gray-100">
-                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path fill="black" d="M12 .5C5.6.5.5 5.6.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1 3 0 .1-.7.4-1 .7-1.3-2.7-.3-5.4-1.3-5.4-5.8 0-1.3.5-2.5 1.2-3.4-.1-.3-.5-1.5.1-3 0 0 1-.3 3.3 1.2.9-.2 1.9-.4 2.8-.4s1.9.1 2.8.4c2.3-1.5 3.3-1.2 3.3-1.2.6 1.5.2 2.7.1 3 .8.9 1.2 2 1.2 3.4 0 4.5-2.7 5.5-5.4 5.8.4.3.8 1 .8 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.6 18.4.5 12 .5z"/>
-                    </svg>
-                    <span class="text-gray-700 font-medium">Sign up with Github</span>
+                    <span class="text-gray-600">Sign up with Github</span>
                 </button>
             </div>
-            <form class="max-w-md" style="margin-top:35px !important">
-                <div class="relative z-0 w-full mb-5 group">
-                    <input type="text" name="floating_fullname" id="floating_fullname" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-400 appearance-none  dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                    <label for="floating_fullname" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Full Name</label>
+
+            <!-- Sign Up Form -->
+            <form id="signup-form" class="space-y-6">
+                {% csrf_token %}
+                
+                <div class="space-y-2">
+                    <input type="text" name="username" placeholder="Full Name" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"/>
                 </div>
-                <div class="relative z-0 w-full my-12 group">
-                    <input type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-400 appearance-none  dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                    <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
+
+                <div class="space-y-2">
+                    <input type="email" name="email" placeholder="Email Address" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"/>
                 </div>
-                <div class="relative z-0 w-full mb-5 group">
-                    <input type="password" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2  appearance-none  border-gray-400 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                    <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
+
+                <div class="space-y-2 relative">
+                    <input type="password" name="password" placeholder="Password" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"/>
                 </div>
-                <div class="flex items-start mb-5">
-                    <div class="flex items-center h-5">
-                    <input id="terms" type="checkbox" value="" class="rounded-md w-4 h-4 border border-gray-300  bg-gray-50 focus:ring-3 focus:ring-blue-300  dark:border-gray-600  " required />
-                    </div>
-                    <label for="terms" class="ms-2 text-sm font-medium ">I agree with the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a></label>
-                </div>
-                <div class="flex w-full">
-                    <button type="submit" class="text-white bg-gray-900 hover:bg-gray-950 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm block w-full px-5 py-2.5 text-center ">Login</button>
-            </div>
+
+                <button type="submit" id="submit-btn" 
+                    class="w-full py-3 px-4 bg-[#4169E1] text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                    <span id="btn-text">Create Account</span>
+                    <span id="btn-loader" class="hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                </button>
             </form>
-            <p style="padding:20px 0px">Already have an account? <a href="/users/login" class="text-blue-600 hover:underline dark:text-blue-500">Login now</a></p>
-        </div>    
+
+            <!-- Login Link -->
+            <p class="mt-8 text-center text-gray-600">
+                Already have an account? 
+                <a href="{% url 'login' %}" class="text-[#4169E1] hover:underline">Log In</a>
+            </p>
+        </div>
     </div>
 </div>
-{% endblock content %}
+
+<script>
+    function showAlert(type, message) {
+        const alertBox = document.getElementById("alert-box");
+        const alertContent = document.getElementById("alert-content");
+        const alertIcon = document.getElementById("alert-icon");
+        const alertMessage = document.getElementById("alert-message");
+    
+        // Define icon SVGs
+        const icons = {
+            success: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+            </svg>`,
+            error: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M12 3a9 9 0 1 1-6.36 15.36"/>
+            </svg>`,
+            info: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8h.01M12 12h0"/>
+            </svg>`
+        };
+    
+        // Tailwind styles for different alert types
+        const alertStyles = {
+            success: "border border-green-700 bg-green-50 text-green-700",
+            error: "border border-red-700 bg-red-50 text-red-700",
+            info: "border border-blue-700 bg-blue-50 text-blue-700"
+        };
+    
+        // Apply styles and update content
+        alertContent.className = `flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium ${alertStyles[type]}`;
+        alertIcon.innerHTML = icons[type];
+        alertMessage.textContent = message;
+        // Show alert
+        alertBox.classList.add("flex");
+    }
+    
+    document.getElementById('signup-form').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        
+        let form = event.target;
+        let formData = new FormData(form);
+        let csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+        
+        let submitBtn = document.getElementById("submit-btn");
+        let btnText = document.getElementById("btn-text");
+        let btnLoader = document.getElementById("btn-loader");
+        let alertBox = document.getElementById("alert-box");
+        btnText.value = "Processing...";
+        // Disable button and show loader
+        submitBtn.disabled = true;
+        btnLoader.classList.remove("hidden");
+        
+        try {
+            let response = await fetch("{% url 'signup' %}", {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": csrfToken
+                },
+                body: formData
+            });
+    
+            let data = await response.json();
+            if(data.message){
+               
+                showAlert(data.success? "success" : "error", data.message);    
+            }
+            // Show response message
+            form.reset();
+        } catch (error) {
+            showAlert("error", "An unexpected error occurred! Please try again later!")
+        }
+    
+        // Re-enable button
+        submitBtn.disabled = false;
+        btnLoader.classList.add("hidden");
+        btnText.classList.remove("hidden");
+    });
+</script>
+{% endblock %}
