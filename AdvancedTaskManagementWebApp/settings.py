@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-)!+ts2#_8h^zs0rioh*kt%175@qse&&phyyf8uve1r(7kh=ueo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 
 
 # Application definition
@@ -83,7 +83,7 @@ TEMPLATES = [
     },
 ]
 TAILWIND_APP_NAME = 'theme'
-WSGI_APPLICATION = 'AdvancedTaskManagementWebApp.wsgi.application'
+WSGI_APPLICATION = 'AdvancedTaskManagementWebApp.wsgi.app'
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 
 # Database

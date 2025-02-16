@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    background: #87CEEB;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: #fff;
+    height: 100vh;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #5465;
+}
+
+.menu {
+    list-style: none;
+}
+
+.menu li {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.menu li i {
+    margin-right: 10px;
+    color: #590;
+}
+
+.menu li:hover {
+    background: #e3e8f5;
+}
+
+/* Task Overview Section */
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.task-overview {
+    display: flex;
+    gap: 20px;
+}
+
+.task-card {
+    flex: 1;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.task-card i {
+    font-size: 30px;
+    color: #4a90e2;
+}
+
+.task-card h3 {
+    margin: 10px 0;
+}
+
+.task-card p {
+    font-size: 14px;
+    color: #666;
+}
